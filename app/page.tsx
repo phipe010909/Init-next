@@ -16,7 +16,7 @@ export default function Home() {
       <div className="flex flex-col items-center gap-6 text-white max-w-2xl">
           <h1 className="text-5xl">Vive la tranquilidad que siempre soñaste</h1>
           <p className="text-xl opacity-90">Lotes campestres en un entorno natural para vivir, invertir y disfrutar.</p>
-        <CTA />
+        <CTA texto="Contactanos" href="/segunda" />
       </div>
     </div>
   );
