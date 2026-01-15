@@ -10,8 +10,7 @@ export default function RecentOrderItem({ id, status, location }: RecentOrderIte
     return (
         <div className="flex items-center justify-between py-4 border-b border-gray-200 last:border-b-0">
             <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#F6E6EA] flex items-center justify-center">
-                    <span className="text-[#B64A63] text-lg">●</span>
+                <div className="w-10 h-10 rounded-full bg-[#F6E6EA] border-2 border-[#B64A63] flex items-center justify-center">
                 </div>
                 <div>
                     <p className="font-semibold text-gray-900">{id}</p>

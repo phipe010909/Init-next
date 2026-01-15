@@ -10,9 +10,9 @@ type DashboardLayoutProps = {
 export default function DashboardLayout({ title, subtitle, children }: DashboardLayoutProps) {
     return (
         <div className="flex h-screen">
-                <Sidebar />
+            <Sidebar />
             <div className="flex flex-col flex-1 overflow-hidden">
-            <Header />
+                <Header />
                 <div className="flex-1 overflow-y-auto">
                     <main className="p-8 bg-gray-50 w-full">
                         <div className="mb-8">

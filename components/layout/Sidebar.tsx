@@ -11,20 +11,20 @@ export default function Sidebar() {
             </div>
             <div>
                 <nav className="flex flex-col gap-1">
-                    <Item active label="Mi Dashboard" icon="/icons/hogar.png" />
-                    <Item label="Mis pedidos" icon="/icons/carrito-compras.png" />
+                    <Item active label="Mi Dashboard" icon="/icons/hogar.png" showBorder />
+                    <Item label="Mis pedidos" icon="/icons/carrito-compras.png" showBorder />
                     <Item label="Mis Facturas" icon="/icons/cuenta.png" />
                 </nav>
             </div>
             <div className="flex flex-col p-4 justify-center items-center gap-2">
                 <div className=" text-sm text-gray-500 cursor-pointer">
-                Cerrar sesión
-                <Image src="/icons/configuracion.png" alt="Cerrar sesión" width={16} height={16} className="inline-block ml-2 object-contain" />
+                <Image src="/icons/nueva-cuenta.png" alt="Cerrar sesión" width={30} height={30} className="inline-block ml-2 object-contain" />
+                <span className="ml-2">juan.felipe@homies.com</span>
             </div>
 
             <div className="text-sm text-gray-500 cursor-pointer w-2/3 justify-between flex items-center ">
-                Cerrar sesión
-                <Image src="/icons/configuracion.png" alt="Cerrar sesión" width={16} height={16} className="inline-block ml-2 object-contain" />
+                <span>Cerrar sesión</span>
+                <Image src="/icons/configuracion.png" alt="Cerrar sesión" width={30} height={30} className="inline-block ml-2 object-contain" />
             </div>
             </div>
             
@@ -36,12 +36,15 @@ type ItemProps = {
     label: string;
     active?: boolean;
     icon?: string;
+    showBorder?: boolean;
 };
 
-const Item = ({ label, active = false, icon }: ItemProps) => (
+const Item = ({ label, active = false, icon, showBorder = false }: ItemProps) => (
     <div
-        className={`flex gap-3 px-6 py-3 cursor-pointer items-center ${
-            active ? "bg-[#F6E6EA] text-[#B64A63] font-semibold" : "text-gray-700"
+        className={`flex gap-3 px-6 py-3 cursor-pointer items-center border-l-[6px] ${
+            active 
+                ? `bg-[#F6E6EA] text-[#B64A63] font-semibold ${showBorder ? "border-[#B64A63]" : "border-transparent"}` 
+                : `text-gray-700 ${showBorder ? "border-[#B64A63]" : "border-transparent"}`
         }`}
     >
         {icon && (
