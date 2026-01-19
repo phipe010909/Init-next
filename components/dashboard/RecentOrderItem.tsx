@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 type RecentOrderItemProps = {
   id: string;
   status: string;
@@ -11,6 +15,8 @@ export default function RecentOrderItem({
   location,
   time,
 }: RecentOrderItemProps) {
+  const [open, setOpen] = useState(false);
+
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "en preparación":
@@ -43,46 +49,103 @@ export default function RecentOrderItem({
   const colors = getStatusColor(status);
 
   return (
-    <div className="flex items-center justify-between py-4 px-0 border-b border-gray-200 last:border-b-0 hover:bg-gray-50 transition">
-      <div className="flex items-center flex-1 min-w-0">
-        <div className="flex-1 min-w-0">
+    <>
+      <div className="flex items-center justify-between py-4 border-b last:border-b-0 hover:bg-gray-50 transition">
+        <div className="flex-1">
           <p className="font-bold text-gray-900 text-sm">
-            pedido {id}
+            Pedido {id}
           </p>
           {location && (
             <p className="text-xs text-gray-400">{location}</p>
           )}
         </div>
-      </div>
 
-      <div className="flex items-center gap-12 ml-4 flex-shrink-0">
-        <div
-          className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}
-        >
+        <div className="flex items-center gap-8">
           <div
-            className={`w-2.5 h-2.5 rounded-full ${colors.dot}`}
-          ></div>
-          {status}
+            className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold ${colors.bg} ${colors.text}`}
+          >
+            <div
+              className={`w-2.5 h-2.5 rounded-full ${colors.dot}`}
+            />
+            {status}
+          </div>
+
+          {time && (
+            <p className="text-sm text-gray-600 whitespace-nowrap">
+              {time}
+            </p>
+          )}
+
+          <button
+            onClick={() => setOpen(true)}
+            className="bg-[#B64A63] text-white px-6 py-2 rounded-xl font-medium hover:bg-[#a03f5a] transition text-sm"
+          >
+            Pedido
+          </button>
         </div>
-
-        {time && (
-          <p className="text-sm text-gray-600 whitespace-nowrap">
-            {time}
-          </p>
-        )}
-
-        <a
-          href="#"
-          className="text-[#B64A63] text-sm font-medium hover:underline flex items-center"
-        >
-          Ver <span className="ml-1 text-lg leading-none">&gt;</span>
-        </a>
-
-        <button className="bg-[#B64A63] text-white px-8 py-2 rounded-xl font-medium hover:bg-[#a03f5a] transition text-sm whitespace-nowrap">
-          Pedido
-        </button>
       </div>
-    </div>
+
+      {open && (
+        <div className="fixed inset-0 z-50 bg-black/30 flex items-center justify-center">
+          <div className="bg-white rounded-2xl w-[90%] max-w-md p-6 shadow-xl">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold">
+                Detalle del pedido {id}
+              </h2>
+              <button
+                onClick={() => setOpen(false)}
+                className="text-gray-500 text-xl hover:text-gray-800"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between">
+                <span className="text-gray-500">Estado</span>
+                <span className="font-semibold">{status}</span>
+              </div>
+
+              <div className="flex justify-between">
+                <span className="text-gray-500">Sucursal</span>
+                <span className="font-semibold">
+                  {location ?? "Principal"}
+                </span>
+              </div>
+
+              <div className="flex justify-between">
+                <span className="text-gray-500">Hora</span>
+                <span className="font-semibold">{time}</span>
+              </div>
+
+              <hr />
+
+              <div>
+                <p className="font-semibold mb-2">Productos</p>
+                <ul className="text-gray-600 text-sm space-y-1">
+                  <li>• Hamburguesa clásica</li>
+                  <li>• Papas medianas</li>
+                  <li>• Gaseosa</li>
+                </ul>
+              </div>
+
+              <div className="flex justify-between text-base font-bold mt-4">
+                <span>Total</span>
+                <span>$45.000</span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setOpen(false)}
+              className="mt-6 w-full bg-[#B64A63] text-white py-2 rounded-xl font-semibold hover:opacity-90 transition"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
+
 
