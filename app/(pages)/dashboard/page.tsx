@@ -6,41 +6,56 @@ import QuickAccess from "@/components/dashboard/QuickAccess";
 export default function Dashboard() {
     const stats = [
         {
-            label: "Mis pedidos",
-            value: "1",
-            iconUrl: "/icons/carrito-de-compras.png",
+            label: "Pedidos Hoy",
+            value: "12",
+            iconUrl: "/icons/hambuerguesa.png",
+            bgColor: "bg-[#F6E6EA]",
         },
         {
-            label: "Mis Facturas",
-            value: "0",
-            iconUrl: "/icons/correo-electronico.png",
+            label: "Ventas Hoy",
+            value: "$450,000",
+            iconUrl: "/icons/dinero.png",
+            bgColor: "bg-[#E8F5E9]",
         },
         {
-            label: "Mis Pendientes",
-            value: "1",
+            label: "Pendientes",
+            value: "2",
             iconUrl: "/icons/firmar.png",
+            bgColor: "bg-[#FFF9C4]",
         },
     ];
 
     const recentOrders = [
         {
-            id: "#ls Setudo",
-            status: "solicitado",
+            id: "Pedido #00236",
+            status: "En preparación",
+            location: "Sucursal Centro",
+            time: "12:45 p.m.",
         },
         {
-            id: "#ls Setudo",
-            status: "320",
+            id: "Pedido #00235",
+            status: "Entregado",
+            location: "Sucursal Centro",
+            time: "11:27 a.m.",
         },
         {
-            id: "pedido #VWBRSA",
-            status: "solicitado",
-            location: "Sucursal centro",
+            id: "Pedido #00234",
+            status: "Entregado",
+            location: "Sucursal Centro",
+            time: "10:58 a.m.",
+        },
+        {
+            id: "Pedido #VWBRSA",
+            status: "Pendiente",
+            location: "Sucursal Centro",
+            time: "10:20 a.m.",
         },
     ];
 
     const quickAccessItems = [
-        "Mis pedidos: revisa estados y entregas",
-        "Mis facturas: consulta comprobantes emitidos",
+        { label: "Ver Pedidos", iconUrl: "/icons/carritocompras.png" },
+        { label: "Ver facturas", iconUrl: "/icons/documentos2.png" },
+        { label: "Nuevo pedido", },
     ];
 
     return (
@@ -48,13 +63,11 @@ export default function Dashboard() {
             title="Mi Dashboard"
             subtitle="resumen de tus pedidos y facturas"
         >
-            <div className="flex flex-col lg:flex-row gap-8 mb-8">
-                <div className="w-full lg:w-2/5">
-                    <StatsSection stats={stats} />
-                </div>
-                <div className="w-full lg:w-3/5">
-                    <RecentOrders orders={recentOrders} />
-                </div>
+            <div className="grid grid-cols-3 gap-6 mb-8">
+                <StatsSection stats={stats} />
+            </div>
+            <div className="mb-8">
+                <RecentOrders orders={recentOrders} />
             </div>
             <QuickAccess items={quickAccessItems} />
         </DashboardLayout>

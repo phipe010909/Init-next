@@ -6,12 +6,13 @@ type StatsSectionProps = {
         value: string | number;
         icon?: React.ReactNode;
         iconUrl?: string;
+        bgColor?: string;
     }>;
 };
 
 export default function StatsSection({ stats }: StatsSectionProps) {
     return (
-        <section className="flex flex-col gap-6">
+        <>
             {stats.map((stat, index) => (
                 <StatCard
                     key={index}
@@ -19,8 +20,9 @@ export default function StatsSection({ stats }: StatsSectionProps) {
                     value={stat.value}
                     icon={stat.icon}
                     iconUrl={stat.iconUrl}
+                    bgColor={stat.bgColor}
                 />
             ))}
-        </section>
+        </>
     );
 }
