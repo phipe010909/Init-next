@@ -11,7 +11,7 @@ type QuickAccessProps = {
 export default function QuickAccess({ items }: QuickAccessProps) {
     return (
         <section className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Accesos rápidos</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Accesos veloz</h2>
             <div className="grid grid-cols-3 gap-4">
                 {items.map((item, index) => (
                     <div key={index} className={`flex items-center gap-2 px-5 py-3 border border-gray-300 rounded-lg hover:border-[#B64A63] transition ${index === items.length - 1 ? "justify-between" : ""}`}>
