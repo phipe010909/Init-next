@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 type QuickAccessProps = {
@@ -43,3 +45,4 @@ export default function QuickAccess({ items }: QuickAccessProps) {
         </section>
     );
 }
+

@@ -26,8 +26,6 @@ export default function RecentOrders({ orders }: RecentOrdersProps) {
       <h2 className="text-2xl font-bold text-gray-900 mb-4">
         Pedidos recientes
       </h2>
-
-      {/* Buscador */}
       <div className="mb-4">
         <input
           type="text"
